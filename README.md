@@ -4,9 +4,9 @@ Creates pseudosoundings from reanalysis datasets such as ERA5 and CFSR/CFSRv2.
 
 ## Dependencies
 
-sharppy
-metpy
-siphon
+- sharppy
+- metpy
+- siphon
 
 ## Usage
 
