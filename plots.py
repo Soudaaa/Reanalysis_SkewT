@@ -62,7 +62,10 @@ def plot_skewt(pressure, hgt_agl, tmp, td, u_wind, v_wind, leftmover = True, sav
     in_pres = [interp.pres(prof, interp.to_agl(prof, h)) for h in [500, 1000, 3000, 6000, 9000, 12000]]
     in_wind = [interp.components(prof, p) for p in in_pres]
         
-    eff_inflow = params.effective_inflow_layer_binary(prof=prof, mupcl=mu_pcl)
+    try:
+        eff_inflow = params.effective_inflow_layer(prof=prof, mupcl=mu_pcl)
+    except:
+        eff_inflow = params.effective_inflow_layer_binary(prof=prof, mupcl=mu_pcl)
     eff_bot_m = interp.to_agl(prof, interp.hght(prof, eff_inflow[0]))
     eff_top_m = interp.to_agl(prof, interp.hght(prof, eff_inflow[1]))
     eff_wind = [interp.components(prof, p) for p in [eff_inflow[0], eff_inflow[1]]]

@@ -256,6 +256,20 @@ def retrieve_CFSR(lon = None, lat = None, datetime = None):
     return lon_grid, lat_grid, p_skewt, hgt_AGL, T_skewt, Td_skewt, u_skewt, v_skewt
 
 def sel_data(reanalysis = 'ERA5', cidade = None, estado = None, dt = None):
+    """
+    
+    Parameters
+    ----------
+    reanalysis : str
+        Renalysis model to extract pseudosounding (ERA5, CFSR, CFSRv2). Default is ERA5.
+    cidade : str
+        City name to which the closest grid point will be used to generate de vertical profile.
+    estado : str
+        Estate of the city where profile will be extracted from
+    dt : str
+        date and time of interest in the "YYYYMDH" format
+    
+    """
     geoloc = Nominatim(user_agent="Your Name")
     location = geoloc.geocode(cidade + ',' + estado)
     time = datetime.strptime(dt, '%Y%m%d%H')
